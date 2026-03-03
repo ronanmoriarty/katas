@@ -1,13 +1,13 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class RemoveDuplicateSpacesRule
+public class DuplicateSpacesRule
 {
     public async IAsyncEnumerable<string> Filter(IAsyncEnumerable<string> input)
     {
         var previousTokenWasSpace = false;
         await foreach (var token in input)
         {
-            if (token.IsWhiteSpace())
+            if (token.IsWhiteSpace() && token != Environment.NewLine)
             {
                 if (!previousTokenWasSpace)
                 {

@@ -1,6 +1,6 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class DoesNotContainDeniedLettersRule(char deniedLetter) : IFilter<string>
+public class DeniedLettersRule(char deniedLetter) : IFilter<string>
 {
     public bool Filter(string input)
     {

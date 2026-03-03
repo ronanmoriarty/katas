@@ -1,6 +1,6 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class DoesNotContainDeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleCharacters) : IFilter<string>
+public class DeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleCharacters) : IFilter<string>
 {
     public bool Filter(string input)
     {
