@@ -1,15 +1,8 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class DeniedLettersInMiddleRule : IFilter<string>
+public class DeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleCharacters) : IFilter<string>
 {
-    private readonly IEnumerable<char> _deniedMiddleCharactersInUpperCase;
-
-    public DeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleCharacters)
-    {
-        _deniedMiddleCharactersInUpperCase = new string(deniedMiddleCharacters.ToArray())
-            .ToUpperInvariant()
-            .ToCharArray();
-    }
+    private readonly IEnumerable<char> _deniedMiddleCharactersInUpperCase = deniedMiddleCharacters.Select(char.ToUpperInvariant);
 
     public bool Filter(string input)
     {
