@@ -2,7 +2,7 @@
 
 public class MinimumLetterCountFilter(int minimumNumberOfLetters) : IFilter<string>
 {
-    private const string SpecialCharacters = "!\"£$%^&*()[]{};:'@#~\\|,<.>/?\n";
+    private const string SpecialCharacters = "!\"£$%^&*()[]{};:'@#~\\|,<.>/?\n ";
     public bool Filter(string input)
     {
         if (input == null)
@@ -10,7 +10,7 @@ public class MinimumLetterCountFilter(int minimumNumberOfLetters) : IFilter<stri
             return false;
         }
 
-        if (SpecialCharacters.Contains(input))
+        if (SpecialCharacters.Contains(input) || input == Environment.NewLine)
         {
             return true;
         }

@@ -27,8 +27,9 @@ public class MinimumLetterCountFilterTests
 
     internal static IEnumerable<TestCaseData> GetSpecialCharacterTestCases()
     {
-        return "!\"£$%^&*()[]{};:'@#~\\|,<.>/?\n"
+        return "!\"£$%^&*()[]{};:'@#~\\|,<.>/?\n "
             .ToCharArray()
-            .Select(c => new TestCaseData(c.ToString()));
+            .Select(c => new TestCaseData(c.ToString()))
+            .Concat([new TestCaseData("\r\n")]);
     }
 }
