@@ -8,6 +8,7 @@ namespace Exercise1.Tests;
 public class TokenizerTests
 {
     [TestCase("Hello, World!", new[] { "Hello", ",", " ", "World", "!" })]
+    [TestCase("Hello,\r\n World!", new[] { "Hello", ",", "\r\n", " ", "World", "!" })]
     public async Task CanParseStreamIntoTokens(string input, string[] expected)
     {
         using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(input));

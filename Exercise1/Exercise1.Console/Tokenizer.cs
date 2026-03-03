@@ -8,8 +8,14 @@ public class Tokenizer
     {
         using var streamReader = new StreamReader(input);
         string line;
+        var firstLine = true;
         while ((line = await streamReader.ReadLineAsync()) is not null)
         {
+            if (!firstLine)
+            {
+                yield return Environment.NewLine;
+            }
+
             var stringBuilder = new StringBuilder();
             var previousCharacterIsLetter = false;
             foreach (var c in line)
@@ -32,6 +38,8 @@ public class Tokenizer
                     previousCharacterIsLetter = false;
                 }
             }
+
+            firstLine = false;
         }
     }
 }
