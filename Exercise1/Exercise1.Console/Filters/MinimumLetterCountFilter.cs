@@ -1,6 +1,6 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class MinimumLetterCountFilter(int minimumNumberOfLetters)
+public class MinimumLetterCountFilter(int minimumNumberOfLetters) : IFilter<string>
 {
     public bool Filter(string input)
     {

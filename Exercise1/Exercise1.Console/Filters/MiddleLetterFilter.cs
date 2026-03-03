@@ -1,6 +1,6 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class MiddleLetterFilter(params IEnumerable<char> deniedMiddleCharacters)
+public class MiddleLetterFilter(params IEnumerable<char> deniedMiddleCharacters) : IFilter<string>
 {
     public bool Filter(string input)
     {
