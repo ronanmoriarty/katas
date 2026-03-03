@@ -9,8 +9,13 @@ await using var stream = new FileStream(Path.Combine(filePath), FileMode.Open);
 
 var tokens = new Tokenizer().Parse(stream);
 
-await tokens
+var filteredTokens = tokens
     .Filter(new DoesNotContainDeniedLettersInMiddleRule('a', 'e', 'i', 'o', 'u'))
     .Filter(new HasMinimumNumberOfLettersRule(3))
-    .Filter(new DoesNotContainDeniedLettersRule('t'))
+    .Filter(new DoesNotContainDeniedLettersRule('t'));
+
+var removeDuplicateSpacesRule = new RemoveDuplicateSpacesRule();
+var sanitizedTokens = removeDuplicateSpacesRule.Filter(filteredTokens);
+
+await sanitizedTokens
     .Apply(Console.Write);
