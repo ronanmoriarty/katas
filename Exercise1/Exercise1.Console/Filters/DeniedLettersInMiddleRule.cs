@@ -1,10 +1,20 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class DeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleCharacters) : IFilter<string>
+public class DeniedLettersInMiddleRule : IFilter<string>
 {
+    private readonly IEnumerable<char> _deniedMiddleCharactersInUpperCase;
+
+    public DeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleCharacters)
+    {
+        _deniedMiddleCharactersInUpperCase = new string(deniedMiddleCharacters.ToArray())
+            .ToUpperInvariant()
+            .ToCharArray();
+    }
+
     public bool Filter(string input)
     {
-        IList<int> indices = new List<int>();
+        var upperCaseInput = input.ToUpperInvariant();
+        var indices = new List<int>();
         if (input.Length % 2 == 0)
         {
             indices.Add(input.Length / 2); // 4 -> 2
@@ -15,6 +25,6 @@ public class DeniedLettersInMiddleRule(params IEnumerable<char> deniedMiddleChar
             indices.Add(input.Length / 2); // 4 -> 2
         }
 
-        return indices.All(index => !deniedMiddleCharacters.Contains(input[index]));
+        return indices.All(index => !_deniedMiddleCharactersInUpperCase.Contains(upperCaseInput[index]));
     }
 }

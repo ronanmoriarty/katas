@@ -24,4 +24,14 @@ public class DeniedLettersInMiddleRuleTests
         var result = new DeniedLettersInMiddleRule(deniedMiddleCharacters.ToCharArray()).Filter(input);
         Assert.That(result, Is.EqualTo(expected));
     }
+    
+    [TestCase("ORANGE", "aeiou", false)]
+    [TestCase("MARMALADE", "aeiou", false)]
+    public void IsCaseInsensitive(string input,
+        string deniedMiddleCharacters,
+        bool expected)
+    {
+        var result = new DeniedLettersInMiddleRule(deniedMiddleCharacters.ToCharArray()).Filter(input);
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }

@@ -16,4 +16,13 @@ public class DeniedLettersRuleTests
         var result = new DeniedLettersRule(deniedCharacter).Filter(input);
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCase("HAT", 'a', false)]
+    public void IsCaseInsensitive(string input,
+        char deniedCharacter,
+        bool expected)
+    {
+        var result = new DeniedLettersRule(deniedCharacter).Filter(input);
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
