@@ -4,6 +4,6 @@ public class MinimumLetterCountFilter(int minimumNumberOfLetters)
 {
     public bool Filter(string input)
     {
-        return input.Length >= minimumNumberOfLetters;
+        return input?.Length >= minimumNumberOfLetters;
     }
 }

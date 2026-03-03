@@ -9,6 +9,7 @@ public class MinimumLetterCountFilterTests
     [TestCase("hat", 3, true)]
     [TestCase("ha", 3, false)]
     [TestCase("hat", 4, false)]
+    [TestCase(null, 1, false)]
     public void OnlyReturnsTrueWhenMinimumNumberOfLettersFound(string input,
         int minimumNumberOfLetters,
         bool expected)
