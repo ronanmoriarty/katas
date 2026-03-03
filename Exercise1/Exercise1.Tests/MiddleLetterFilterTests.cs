@@ -10,6 +10,13 @@ public class MiddleLetterFilterTests
     [TestCase("hit", "a", true)]
     [TestCase("hiet", "a", true)]
     [TestCase("hiet", "i", false)]
+    [TestCase("hiet", "e", false)]
+    [TestCase("cat", "aeiou", false)]
+    [TestCase("cat", "aeiou", false)]
+    [TestCase("dog", "aeiou", false)]
+    [TestCase("mouse", "aeiou", false)]
+    [TestCase("abc", "aeiou", true)]
+    [TestCase("abcd", "aeiou", true)]
     public void OnlyReturnsTrueWhenDeniedCharactersNotFoundInMiddle(string input,
         string deniedMiddleCharacters,
         bool expected)
