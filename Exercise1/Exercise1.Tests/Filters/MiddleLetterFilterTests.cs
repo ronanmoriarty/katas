@@ -1,7 +1,7 @@
 ﻿using Exercise1.Console.Filters;
 using NUnit.Framework;
 
-namespace Exercise1.Tests;
+namespace Exercise1.Tests.Filters;
 
 [TestFixture]
 public class MiddleLetterFilterTests
