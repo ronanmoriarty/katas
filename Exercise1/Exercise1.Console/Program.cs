@@ -14,8 +14,8 @@ var filteredTokens = tokens
     .Filter(new MinimumLettersRule(3))
     .Filter(new DeniedLettersRule('t'));
 
-var removeDuplicateSpacesRule = new DuplicateSpacesRule();
-var sanitizedTokens = removeDuplicateSpacesRule.Filter(filteredTokens);
+var duplicateSpacesRule = new DuplicateSpacesRule();
+var sanitizedTokens = duplicateSpacesRule.Filter(filteredTokens);
 
 await sanitizedTokens
     .Apply(Console.Write);
