@@ -11,4 +11,8 @@
       <PackageReference Include="NUnit" Version="4.5.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Exercise1.Console\Exercise1.Console.csproj" />
+    </ItemGroup>
+
 </Project>

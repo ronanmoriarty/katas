@@ -1,5 +1,18 @@
-﻿namespace Exercise1.Tests;
+﻿using Exercise1.Console.Filters;
+using NUnit.Framework;
 
-public class Class1
+namespace Exercise1.Tests;
+
+[TestFixture]
+public class MiddleLetterFilterTests
 {
+    [TestCase("hat", "a", false)]
+    [TestCase("hit", "a", true)]
+    public void OnlyReturnsTrueWhenDeniedCharactersNotFoundInMiddle(string input,
+        string deniedMiddleCharacters,
+        bool expected)
+    {
+        var result = new MiddleLetterFilter(deniedMiddleCharacters.ToCharArray()).Filter(input);
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
