@@ -17,4 +17,18 @@ public class MinimumLetterCountFilterTests
         var result = new MinimumLetterCountFilter(minimumNumberOfLetters).Filter(input);
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCaseSource(nameof(GetSpecialCharacterTestCases))]
+    public void SpecialCharactersAreExempt(string input)
+    {
+        var result = new MinimumLetterCountFilter(3).Filter(input);
+        Assert.That(result, Is.True);
+    }
+
+    internal static IEnumerable<TestCaseData> GetSpecialCharacterTestCases()
+    {
+        return "!\"£$%^&*()[]{};:'@#~\\|,<.>/?\n"
+            .ToCharArray()
+            .Select(c => new TestCaseData(c.ToString()));
+    }
 }
