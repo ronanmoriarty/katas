@@ -4,7 +4,17 @@ public class MiddleLetterFilter(params IEnumerable<char> deniedMiddleCharacters)
 {
     public bool Filter(string input)
     {
-        int index = input.Length / 2;
-        return !deniedMiddleCharacters.Contains(input[index]);
+        IList<int> indices = new List<int>();
+        if (input.Length % 2 == 0)
+        {
+            indices.Add(input.Length / 2); // 4 -> 2
+            indices.Add(input.Length / 2 - 1); // 4 -> 1
+        }
+        else
+        {
+            indices.Add(input.Length / 2); // 4 -> 2
+        }
+
+        return indices.All(index => !deniedMiddleCharacters.Contains(input[index]));
     }
 }

@@ -8,6 +8,8 @@ public class MiddleLetterFilterTests
 {
     [TestCase("hat", "a", false)]
     [TestCase("hit", "a", true)]
+    [TestCase("hiet", "a", true)]
+    [TestCase("hiet", "i", false)]
     public void OnlyReturnsTrueWhenDeniedCharactersNotFoundInMiddle(string input,
         string deniedMiddleCharacters,
         bool expected)
