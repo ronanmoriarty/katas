@@ -1,6 +1,6 @@
 ﻿namespace Exercise1.Console.Filters;
 
-public class MinimumLetterCountFilter(int minimumNumberOfLetters) : IFilter<string>
+public class HasMinimumNumberOfLettersRule(int minimumNumberOfLetters) : IFilter<string>
 {
     private const string SpecialCharacters = "!\"£$%^&*()[]{};:'@#~\\|,<.>/?\n ";
     public bool Filter(string input)

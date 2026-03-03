@@ -10,7 +10,7 @@ await using var stream = new FileStream(Path.Combine(filePath), FileMode.Open);
 var tokens = new Tokenizer().Parse(stream);
 
 await tokens
-    .Filter(new MiddleLetterFilter('a', 'e', 'i', 'o', 'u'))
-    .Filter(new MinimumLetterCountFilter(3))
-    .Filter(new ContainsLetterFilter('t'))
+    .Filter(new DoesNotContainDeniedLettersInMiddleRule('a', 'e', 'i', 'o', 'u'))
+    .Filter(new HasMinimumNumberOfLettersRule(3))
+    .Filter(new DoesNotContainDeniedLettersRule('t'))
     .Apply(Console.Write);

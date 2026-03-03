@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Exercise1.Tests.Filters;
 
 [TestFixture]
-public class MiddleLetterFilterTests
+public class DoesNotContainDeniedLettersInMiddleRuleTests
 {
     [TestCase("hat", "a", false)]
     [TestCase("hit", "a", true)]
@@ -21,7 +21,7 @@ public class MiddleLetterFilterTests
         string deniedMiddleCharacters,
         bool expected)
     {
-        var result = new MiddleLetterFilter(deniedMiddleCharacters.ToCharArray()).Filter(input);
+        var result = new DoesNotContainDeniedLettersInMiddleRule(deniedMiddleCharacters.ToCharArray()).Filter(input);
         Assert.That(result, Is.EqualTo(expected));
     }
 }

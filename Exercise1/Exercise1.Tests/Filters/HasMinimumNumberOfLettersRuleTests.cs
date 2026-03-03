@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Exercise1.Tests.Filters;
 
 [TestFixture]
-public class MinimumLetterCountFilterTests
+public class HasMinimumNumberOfLettersRuleTests
 {
     [TestCase("hat", 3, true)]
     [TestCase("ha", 3, false)]
@@ -14,14 +14,14 @@ public class MinimumLetterCountFilterTests
         int minimumNumberOfLetters,
         bool expected)
     {
-        var result = new MinimumLetterCountFilter(minimumNumberOfLetters).Filter(input);
+        var result = new HasMinimumNumberOfLettersRule(minimumNumberOfLetters).Filter(input);
         Assert.That(result, Is.EqualTo(expected));
     }
 
     [TestCaseSource(nameof(GetSpecialCharacterTestCases))]
     public void SpecialCharactersAreExempt(string input)
     {
-        var result = new MinimumLetterCountFilter(3).Filter(input);
+        var result = new HasMinimumNumberOfLettersRule(3).Filter(input);
         Assert.That(result, Is.True);
     }
 

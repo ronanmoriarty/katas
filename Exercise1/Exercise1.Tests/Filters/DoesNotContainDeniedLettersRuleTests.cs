@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Exercise1.Tests.Filters;
 
 [TestFixture]
-public class ContainsLetterFilterTests
+public class DoesNotContainDeniedLettersRuleTests
 {
     [TestCase("hat", 'a', false)]
     [TestCase("hat", 'b', true)]
@@ -13,7 +13,7 @@ public class ContainsLetterFilterTests
         char deniedCharacter,
         bool expected)
     {
-        var result = new ContainsLetterFilter(deniedCharacter).Filter(input);
+        var result = new DoesNotContainDeniedLettersRule(deniedCharacter).Filter(input);
         Assert.That(result, Is.EqualTo(expected));
     }
 }
