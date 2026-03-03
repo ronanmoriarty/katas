@@ -17,6 +17,9 @@ public class DeniedLettersInMiddleRuleTests
     [TestCase("mouse", "aeiou", false)]
     [TestCase("abc", "aeiou", true)]
     [TestCase("abcd", "aeiou", true)]
+    [TestCase("clean", "aeiou", false)]
+    [TestCase("what", "aeiou", false)]
+    [TestCase("currently", "aeiou", false)]
     public void OnlyReturnsTrueWhenDeniedCharactersNotFoundInMiddle(string input,
         string deniedMiddleCharacters,
         bool expected)
